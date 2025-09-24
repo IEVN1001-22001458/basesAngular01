@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="form-wrapper">
+    <div class="form-section entradas">
+      <h2>Entradas</h2>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" [(ngModel)]="nombre" placeholder="Nombre del comprador">
+      </div>
+      <div class="form-group">
+        <label for="compradores">Cantidad Compradores</label>
+        <input type="number" id="compradores" [(ngModel)]="cantidadCompradores" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label>Tarjeta Cineco</label>
+        <div class="radio-group">
+          <input type="radio" id="si" name="tarjeta" value="Si" [(ngModel)]="tarjetaCineco">
+          <label for="si">Sí</label>
+          <input type="radio" id="no" name="tarjeta" value="No" [(ngModel)]="tarjetaCineco">
+          <label for="no">No</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="boletas">Cantidad De Boletas</label>
+        <input type="number" id="boletas" [(ngModel)]="cantidadBoletas" placeholder="0">
+      </div>
+    </div>
+
+    <div class="form-section salidas">
+      <h2>Salidas</h2>
+      <div class="form-group">
+        <label for="resultado">Valor a Pagar</label>
+        <input type="text" id="resultado" [value]="resultado" readonly>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-section">
+    <div class="logo-container">
+      <h1>Cinépolis</h1>
+      <h2>LA CAPITAL DEL CINE</h2>
+    </div>
+    <div class="acciones">
+      <button (click)="procesarCompra()">Procesar</button>
+      <button (click)="limpiar()" class="btn-secondary">Salir</button>
+    </div>
+  </div>
+
+</div>
