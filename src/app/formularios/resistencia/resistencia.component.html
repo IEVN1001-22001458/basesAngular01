@@ -1,0 +1,91 @@
+<h1>Calculadora de Valor de Resistencias</h1>
+
+<div class="container">
+  <table class="band-selector">
+    <thead><tr><th>1ra. Banda</th></tr></thead>
+    <tbody>
+      <tr><td class="color-negro"><input type="radio" name="band1" [value]="0" [(ngModel)]="banda1"> Negro</td></tr>
+      <tr><td class="color-cafe"><input type="radio" name="band1" [value]="1" [(ngModel)]="banda1"> Café</td></tr>
+      <tr><td class="color-rojo"><input type="radio" name="band1" [value]="2" [(ngModel)]="banda1"> Rojo</td></tr>
+      <tr><td class="color-naranja"><input type="radio" name="band1" [value]="3" [(ngModel)]="banda1"> Naranja</td></tr>
+      <tr><td class="color-amarillo"><input type="radio" name="band1" [value]="4" [(ngModel)]="banda1"> Amarillo</td></tr>
+      <tr><td class="color-verde"><input type="radio" name="band1" [value]="5" [(ngModel)]="banda1"> Verde</td></tr>
+      <tr><td class="color-azul"><input type="radio" name="band1" [value]="6" [(ngModel)]="banda1"> Azul</td></tr>
+      <tr><td class="color-morado"><input type="radio" name="band1" [value]="7" [(ngModel)]="banda1"> Morado</td></tr>
+      <tr><td class="color-gris"><input type="radio" name="band1" [value]="8" [(ngModel)]="banda1"> Gris</td></tr>
+      <tr><td class="color-blanco"><input type="radio" name="band1" [value]="9" [(ngModel)]="banda1"> Blanco</td></tr>
+    </tbody>
+  </table>
+
+  <table class="band-selector">
+    <thead><tr><th>2da. Banda</th></tr></thead>
+    <tbody>
+      <tr><td class="color-negro"><input type="radio" name="band2" [value]="0" [(ngModel)]="banda2"> Negro</td></tr>
+      <tr><td class="color-cafe"><input type="radio" name="band2" [value]="1" [(ngModel)]="banda2"> Café</td></tr>
+      <tr><td class="color-rojo"><input type="radio" name="band2" [value]="2" [(ngModel)]="banda2"> Rojo</td></tr>
+      <tr><td class="color-naranja"><input type="radio" name="band2" [value]="3" [(ngModel)]="banda2"> Naranja</td></tr>
+      <tr><td class="color-amarillo"><input type="radio" name="band2" [value]="4" [(ngModel)]="banda2"> Amarillo</td></tr>
+      <tr><td class="color-verde"><input type="radio" name="band2" [value]="5" [(ngModel)]="banda2"> Verde</td></tr>
+      <tr><td class="color-azul"><input type="radio" name="band2" [value]="6" [(ngModel)]="banda2"> Azul</td></tr>
+      <tr><td class="color-morado"><input type="radio" name="band2" [value]="7" [(ngModel)]="banda2"> Morado</td></tr>
+      <tr><td class="color-gris"><input type="radio" name="band2" [value]="8" [(ngModel)]="banda2"> Gris</td></tr>
+      <tr><td class="color-blanco"><input type="radio" name="band2" [value]="9" [(ngModel)]="banda2"> Blanco</td></tr>
+    </tbody>
+  </table>
+
+  <table class="band-selector">
+    <thead><tr><th>Multiplicador</th></tr></thead>
+    <tbody>
+      <tr><td class="color-negro"><input type="radio" name="band3" [value]="1" [(ngModel)]="multiplicador"> x1</td></tr>
+      <tr><td class="color-cafe"><input type="radio" name="band3" [value]="10" [(ngModel)]="multiplicador"> x10</td></tr>
+      <tr><td class="color-rojo"><input type="radio" name="band3" [value]="100" [(ngModel)]="multiplicador"> x100</td></tr>
+      <tr><td class="color-naranja"><input type="radio" name="band3" [value]="1000" [(ngModel)]="multiplicador"> x1,000</td></tr>
+      <tr><td class="color-amarillo"><input type="radio" name="band3" [value]="10000" [(ngModel)]="multiplicador"> x10,000</td></tr>
+      <tr><td class="color-verde"><input type="radio" name="band3" [value]="100000" [(ngModel)]="multiplicador"> x100,000</td></tr>
+      <tr><td class="color-azul"><input type="radio" name="band3" [value]="1000000" [(ngModel)]="multiplicador"> x1,000,000</td></tr>
+    </tbody>
+  </table>
+
+  <table class="band-selector">
+    <thead><tr><th>Tolerancia</th></tr></thead>
+    <tbody>
+      <tr><td class="color-dorado"><input type="radio" name="tolerance" [value]="5" [(ngModel)]="tolerancia"> Dorado 5%</td></tr>
+      <tr><td class="color-plata"><input type="radio" name="tolerance" [value]="10" [(ngModel)]="tolerancia"> Plata 10%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<button (click)="calcular()" 
+        [disabled]="banda1 === null || banda2 === null || multiplicador === null || tolerancia === null">
+  Calcular
+</button>
+
+<hr>
+
+<h2>Resultados</h2>
+<table class="results-table">
+  <thead>
+    <tr>
+      <th>Color 1</th>
+      <th>Color 2</th>
+      <th>Color 3</th>
+      <th>Tolerancia</th>
+      <th>Valor</th>
+      <th>Valor máximo</th>
+      <th>Valor mínimo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td [style.background-color]="colorBanda1">{{ nombresColores[banda1!] }}</td>
+      <td [style.background-color]="colorBanda2">{{ nombresColores[banda2!] }}</td>
+      <td [style.background-color]="colorBanda3">{{ nombresColores[multiplicador!.toString().length - 1] }}</td>
+      <td [style.background-color]="colorTolerancia">{{ tolerancia === 5 ? 'Dorado 5%' : 'Plata 10%' }}</td>
+      <td>{{ valor }} </td>
+      <td>{{ valorMax | number:'1.0-2' }} </td>
+      <td>{{ valorMin | number:'1.0-2' }} </td>
+    </tr>
+  </tbody>
+</table>
+
